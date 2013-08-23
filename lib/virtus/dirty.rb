@@ -105,7 +105,7 @@ module Virtus
         class_eval <<-RUBY, __FILE__, __LINE__ + 1
           def #{name}=(value)
             prev_value = #{name}
-            new_value  = super
+            new_value  = super.get(self)
 
             if prev_value != new_value
               unless original_attributes.key?(:#{name})
